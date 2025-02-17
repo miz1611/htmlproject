@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>World Cuisine Explorer</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+@keyframes float {
+0% { transform: translateY(0px); }
+50% { transform: translateY(-10px); }
+100% { transform: translateY(0px); }
+}
+.float { animation: float 3s ease-in-out infinite; }
+.dish-card:hover .dish-image { transform: scale(1.05); }
+.dish-image { transition: transform 0.3s ease-in-out; }
+html { font-size: 18px; }
+</style>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+primary: '#4F46E5',
+secondary: '#EC4899'
+},
+borderRadius: {
+'none': '0px',
+'sm': '4px',
+DEFAULT: '8px',
+'md': '12px',
+'lg': '16px',
+'xl': '20px',
+'2xl': '24px',
+'3xl': '32px',
+'full': '9999px',
+'button': '8px'
+}
+}
+}
+}
+</script>
+</head>
+<body class="bg-gradient-to-br from-gray-50 to-white min-h-screen">
+<header class="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 border-b border-gray-100">
+<nav class="container mx-auto px-4 py-4 flex items-center justify-between">
+<div class="flex items-center space-x-8">
+<h1 class="text-3xl font-['Pacifico'] bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">logo</h1>
+<div class="hidden md:flex items-center space-x-6">
+<a href="#" class="text-gray-600 hover:text-primary transition-colors">Home</a>
+<a href="#" class="text-gray-600 hover:text-primary transition-colors">Menu</a>
+<a href="#" class="text-gray-600 hover:text-primary transition-colors">About</a>
+<a href="#" class="text-gray-600 hover:text-primary transition-colors">Contact</a>
+</div>
+</div>
+<div class="flex items-center space-x-4">
+<div class="relative">
+<input type="text" placeholder="Search dishes..." class="pl-10 pr-4 py-2 rounded-full bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary/20 w-64">
+<div class="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 flex items-center justify-center">
+<i class="ri-search-line text-gray-400"></i>
+</div>
+</div>
+<button class="!rounded-button bg-primary text-white px-6 py-2 hover:bg-primary/90 transition-colors">Order Now</button>
+</div>
+</nav>
+</header>
+<main class="container mx-auto px-4 pt-24">
+<section class="hero mb-16">
+<div class="relative rounded-2xl overflow-hidden bg-gradient-to-r from-primary/5 to-secondary/5 p-12">
+<div class="max-w-2xl">
+<h1 class="text-6xl font-['Playfair_Display'] font-bold mb-6 leading-tight tracking-tight">Discover the World's Most Exquisite Cuisines</h1>
+<p class="text-2xl font-['Poppins'] font-light text-gray-600 mb-8">Embark on a culinary journey through authentic flavors and traditional recipes from across the globe.</p>
+<button class="!rounded-button bg-primary text-white px-8 py-3 text-lg hover:bg-primary/90 transition-colors float">Start Exploring</button>
+</div>
+<img src="https://public.readdy.ai/ai/img_res/24b9ab0d83ecce67d22ec31b3b4e9c45.jpg" class="absolute top-0 right-0 w-1/2 h-full object-cover object-left" alt="World Cuisines">
+</div>
+</section>
+<section class="cuisine-categories mb-16">
+<h2 class="text-4xl font-['Playfair_Display'] font-bold mb-8 tracking-tight">Popular Cuisines</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="cuisine-card bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow overflow-hidden">
+<img src="https://public.readdy.ai/ai/img_res/eccf3906c51ecdd6bd6922eab6f230c2.jpg" class="w-full h-48 object-cover object-center" alt="Italian Cuisine">
+<div class="p-6">
+<h3 class="text-2xl font-['Playfair_Display'] font-semibold mb-2">Italian Cuisine</h3>
+<p class="text-gray-600 font-['Poppins'] text-base">Experience the warmth of Mediterranean flavors</p>
+</div>
+</div>
+<div class="cuisine-card bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow overflow-hidden">
+<img src="https://public.readdy.ai/ai/img_res/4707351723ececb30be04952ead616de.jpg" class="w-full h-48 object-cover object-center" alt="Japanese Cuisine">
+<div class="p-6">
+<h3 class="text-xl font-semibold mb-2">Japanese Cuisine</h3>
+<p class="text-gray-600">Discover the art of minimal perfection</p>
+</div>
+</div>
+<div class="cuisine-card bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow overflow-hidden">
+<img src="https://public.readdy.ai/ai/img_res/3a0b29d6aa1c74308ea325b4e632f889.jpg" class="w-full h-48 object-cover object-center" alt="Indian Cuisine">
+<div class="p-6">
+<h3 class="text-xl font-semibold mb-2">Indian Cuisine</h3>
+<p class="text-gray-600">Indulge in rich spices and flavors</p>
+</div>
+</div>
+<div class="cuisine-card bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow overflow-hidden">
+<img src="https://public.readdy.ai/ai/img_res/75d6145bad60b9f1fc21f9e0f6b9a695.jpg" class="w-full h-48 object-cover object-center" alt="French Cuisine">
+<div class="p-6">
+<h3 class="text-xl font-semibold mb-2">French Cuisine</h3>
+<p class="text-gray-600">Savor the elegance of fine dining</p>
+</div>
+</div>
+</div>
+</section>
+<section class="featured-dishes mb-16">
+<h2 class="text-4xl font-['Playfair_Display'] font-bold mb-8 tracking-tight">Signature Dishes</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="dish-card bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow overflow-hidden">
+<div class="relative overflow-hidden">
+<img src="https://public.readdy.ai/ai/img_res/25fd769a620db57b4c029172f0013a43.jpg" class="w-full h-64 object-cover object-center dish-image" alt="Pasta Carbonara">
+<span class="absolute top-4 right-4 bg-primary text-white px-3 py-1 rounded-full text-sm">Chef's Special</span>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="text-2xl font-['Playfair_Display'] font-semibold mb-1">Pasta Carbonara</h3>
+<p class="text-gray-500 text-base font-['Poppins']">Traditional Roman Style</p>
+</div>
+<span class="text-xl font-bold text-primary">$24.99</span>
+</div>
+<p class="text-gray-600 mb-4">Authentic Italian pasta made with eggs, pecorino cheese, guanciale, and black pepper. A creamy delight that captures Rome's culinary essence.</p>
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-4">
+<span class="flex items-center text-yellow-400">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-half-fill"></i>
+</span>
+<span class="text-gray-500 text-sm">(128 reviews)</span>
+</div>
+<button class="!rounded-button bg-primary text-white px-4 py-2 hover:bg-primary/90 transition-colors">Order Now</button>
+</div>
+</div>
+</div>
+<div class="dish-card bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow overflow-hidden">
+<div class="relative overflow-hidden">
+<img src="https://public.readdy.ai/ai/img_res/3b56a503678823b9579497e74508ea9a.jpg" class="w-full h-64 object-cover object-center dish-image" alt="Dragon Roll">
+<span class="absolute top-4 right-4 bg-secondary text-white px-3 py-1 rounded-full text-sm">Most Popular</span>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="text-xl font-semibold mb-1">Dragon Roll</h3>
+<p class="text-gray-500 text-sm">Premium Sushi Selection</p>
+</div>
+<span class="text-xl font-bold text-primary">$32.99</span>
+</div>
+<p class="text-gray-600 mb-4">Expertly crafted sushi roll featuring fresh eel, cucumber, and avocado, topped with thinly sliced avocado and unagi sauce.</p>
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-4">
+<span class="flex items-center text-yellow-400">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+</span>
+<span class="text-gray-500 text-sm">(256 reviews)</span>
+</div>
+<button class="!rounded-button bg-primary text-white px-4 py-2 hover:bg-primary/90 transition-colors">Order Now</button>
+</div>
+</div>
+</div>
+<div class="dish-card bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow overflow-hidden">
+<div class="relative overflow-hidden">
+<img src="https://public.readdy.ai/ai/img_res/c99637519cae67a10c6f7c5ffebfb8b3.jpg" class="w-full h-64 object-cover object-center dish-image" alt="Butter Chicken">
+<span class="absolute top-4 right-4 bg-primary text-white px-3 py-1 rounded-full text-sm">Bestseller</span>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="text-xl font-semibold mb-1">Butter Chicken</h3>
+<p class="text-gray-500 text-sm">North Indian Delicacy</p>
+</div>
+<span class="text-xl font-bold text-primary">$28.99</span>
+</div>
+<p class="text-gray-600 mb-4">Tender chicken pieces in a rich, creamy tomato sauce with aromatic spices. Served with freshly baked naan bread.</p>
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-4">
+<span class="flex items-center text-yellow-400">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-half-fill"></i>
+</span>
+<span class="text-gray-500 text-sm">(184 reviews)</span>
+</div>
+<button class="!rounded-button bg-primary text-white px-4 py-2 hover:bg-primary/90 transition-colors">Order Now</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="nutritional-info mb-16">
+<h2 class="text-4xl font-['Playfair_Display'] font-bold mb-8 tracking-tight">Nutritional Information</h2>
+<div class="bg-white rounded-xl shadow-sm p-8">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="text-center">
+<div class="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center">
+<i class="ri-heart-pulse-line text-2xl text-primary"></i>
+</div>
+<h3 class="text-lg font-['Playfair_Display'] font-semibold mb-2">Calories</h3>
+<p class="text-gray-600 font-['Poppins'] text-sm">Detailed caloric content for conscious dining</p>
+</div>
+<div class="text-center">
+<div class="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center">
+<i class="ri-leaf-line text-2xl text-primary"></i>
+</div>
+<h3 class="text-lg font-semibold mb-2">Allergens</h3>
+<p class="text-gray-600">Comprehensive allergen information</p>
+</div>
+<div class="text-center">
+<div class="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center">
+<i class="ri-scales-3-line text-2xl text-primary"></i>
+</div>
+<h3 class="text-lg font-semibold mb-2">Portions</h3>
+<p class="text-gray-600">Serving size and portion details</p>
+</div>
+<div class="text-center">
+<div class="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center">
+<i class="ri-restaurant-line text-2xl text-primary"></i>
+</div>
+<h3 class="text-lg font-semibold mb-2">Ingredients</h3>
+<p class="text-gray-600">Full ingredient transparency</p>
+</div>
+</div>
+</div>
+</section>
+<section class="order-section mb-16">
+<h2 class="text-4xl font-['Playfair_Display'] font-bold mb-8 tracking-tight">Quick Order</h2>
+<div class="bg-white rounded-xl shadow-sm p-8">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<div class="space-y-6">
+<div>
+<label class="block text-gray-700 mb-2">Select Your Dish</label>
+<div class="relative">
+<select class="w-full pr-8 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20">
+<option>Choose a dish...</option>
+<option>Pasta Carbonara</option>
+<option>Dragon Roll</option>
+<option>Butter Chicken</option>
+</select>
+</div>
+</div>
+<div>
+<label class="block text-gray-700 mb-2">Special Instructions</label>
+<textarea class="w-full p-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20" rows="4" placeholder="Any special requests?"></textarea>
+</div>
+<div class="flex items-center space-x-4">
+<button class="!rounded-button flex-1 bg-primary text-white py-3 hover:bg-primary/90 transition-colors">Place Order</button>
+<button class="!rounded-button flex-1 bg-secondary text-white py-3 hover:bg-secondary/90 transition-colors">Scan QR to Pay</button>
+</div>
+</div>
+<div class="bg-gray-50 rounded-lg p-6">
+<h3 class="text-xl font-['Playfair_Display'] font-semibold mb-4">Payment Methods</h3>
+<div class="grid grid-cols-2 gap-4">
+<button class="!rounded-button flex items-center justify-center space-x-2 bg-white border border-gray-200 p-4 hover:border-primary transition-colors">
+<i class="ri-visa-line text-2xl"></i>
+<span>Credit Card</span>
+</button>
+<button class="!rounded-button flex items-center justify-center space-x-2 bg-white border border-gray-200 p-4 hover:border-primary transition-colors">
+<i class="ri-paypal-line text-2xl"></i>
+<span>PayPal</span>
+</button>
+<button class="!rounded-button flex items-center justify-center space-x-2 bg-white border border-gray-200 p-4 hover:border-primary transition-colors">
+<i class="ri-apple-fill text-2xl"></i>
+<span>Apple Pay</span>
+</button>
+<button class="!rounded-button flex items-center justify-center space-x-2 bg-white border border-gray-200 p-4 hover:border-primary transition-colors">
+<i class="ri-google-fill text-2xl"></i>
+<span>Google Pay</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-gray-900 text-white py-12">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<div>
+<h3 class="text-xl font-['Pacifico'] mb-4">logo</h3>
+<p class="text-gray-400">Bringing the world's finest cuisines to your table.</p>
+</div>
+<div>
+<h4 class="text-lg font-['Playfair_Display'] font-semibold mb-4">Quick Links</h4>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Menu</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">FAQ</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-4">Contact Us</h4>
+<ul class="space-y-2">
+<li class="flex items-center space-x-2">
+<i class="ri-map-pin-line"></i>
+<span class="text-gray-400">123 Foodie Street, NY 10001</span>
+</li>
+<li class="flex items-center space-x-2">
+<i class="ri-phone-line"></i>
+<span class="text-gray-400">+1 234 567 890</span>
+</li>
+<li class="flex items-center space-x-2">
+<i class="ri-mail-line"></i>
+<span class="text-gray-400">hello@worldcuisine.com</span>
+</li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-4">Follow Us</h4>
+<div class="flex space-x-4">
+<a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-primary transition-colors">
+<i class="ri-facebook-fill"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-primary transition-colors">
+<i class="ri-twitter-fill"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-primary transition-colors">
+<i class="ri-instagram-fill"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-primary transition-colors">
+<i class="ri-youtube-fill"></i>
+</a>
+</div>
+</div>
+</div>
+<div class="border-t border-gray-800 mt-8 pt-8 text-center">
+<p class="text-gray-400">&copy; 2025 World Cuisine Explorer. All rights reserved.</p>
+</div>
+</div>
+</footer>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+const orderButtons = document.querySelectorAll('button');
+orderButtons.forEach(button => {
+button.addEventListener('click', function() {
+const toast = document.createElement('div');
+toast.className = 'fixed bottom-4 right-4 bg-primary text-white px-6 py-3 rounded-lg shadow-lg transform transition-transform duration-300 translate-y-0';
+toast.textContent = 'Thank you for your order!';
+document.body.appendChild(toast);
+setTimeout(() => {
+toast.style.transform = 'translateY(150%)';
+setTimeout(() => {
+document.body.removeChild(toast);
+}, 300);
+}, 3000);
+});
+});
+});
+</script>
+</body>
+</html>
